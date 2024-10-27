@@ -20,7 +20,7 @@ draw = ImageDraw.Draw(img)
 
 # Cambia 'ruta_a_tu_fuente.ttf' por la ruta real a tu archivo de fuente
 font_size = 50  # Aumenta el tamaño de la fuente
-fuente = ImageFont.truetype('C:\\Users\\rocio\\Documents\\Otros programas\\programa_cocina\\fuente.ttf', size=font_size)
+fuente = ImageFont.truetype('Programa_cocina\fuente.ttf', size=font_size)
 
 # Coordenadas donde colocar el texto (ajusta según tu imagen)
 x = 50
