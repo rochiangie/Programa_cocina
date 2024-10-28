@@ -3,7 +3,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 # Paso 1: Leer el archivo Excel
 # Asegúrate de que el archivo Excel esté en el mismo directorio o proporciona la ruta correcta
-excel_file = 'cosas.xlsx'
+excel_file = 'Programa_cocina\\planilla.xlsx'
 df = pd.read_excel(excel_file)
 
 # Paso 2: Procesar los datos
@@ -12,7 +12,7 @@ df = pd.read_excel(excel_file)
 datos_a_colocar = df.iloc[0]  # Extraer la primera fila
 
 # Paso 3: Cargar la imagen prediseñada
-imagen_base = 'salad.jpg'
+imagen_base = 'Programa_cocina\\menu.png'
 img = Image.open(imagen_base)
 
 # Configuración para el texto
@@ -20,7 +20,7 @@ draw = ImageDraw.Draw(img)
 
 # Cambia 'ruta_a_tu_fuente.ttf' por la ruta real a tu archivo de fuente
 font_size = 50  # Aumenta el tamaño de la fuente
-fuente = ImageFont.truetype('Programa_cocina\fuente.ttf', size=font_size)
+fuente = ImageFont.truetype('Programa_cocina\\fuente.ttf', size=font_size)
 
 # Coordenadas donde colocar el texto (ajusta según tu imagen)
 x = 50
