@@ -2,7 +2,7 @@ import pandas as pd
 from PIL import Image, ImageDraw, ImageFont
 
 # Paso 1: Leer el archivo Excel
-excel_file = 'Programa_cocina\\planilla.xlsx'
+excel_file = 'planilla.xlsx'
 df = pd.read_excel(excel_file)
 
 # Paso 2: Especificar las filas y columnas que quieres extraer
@@ -12,13 +12,13 @@ columnas_a_extraer = ["A", "B"]  # Lista de columnas que quieres extraer
 datos_a_colocar = df.loc[filas_a_extraer, columnas_a_extraer]
 
 # Paso 3: Cargar la imagen prediseñada
-imagen_base = 'Programa_cocina\\menu.png'
+imagen_base = 'menu.png'
 img = Image.open(imagen_base)
 
 # Configuración para el texto
 draw = ImageDraw.Draw(img)
 font_size = 50
-fuente = ImageFont.truetype('Programa_cocina\\fuente.ttf', size=font_size)
+fuente = ImageFont.truetype('fuente.ttf', size=font_size)
 
 # Paso 4: Posicionar los textos en la imagen
 # Especifica las coordenadas para cada elemento en una lista
