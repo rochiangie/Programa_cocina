@@ -6,8 +6,8 @@ excel_file = 'planilla.xlsx'
 df = pd.read_excel(excel_file)
 
 # Selección de filas y columnas específicas
-filas_a_extraer = [0, 1]          # Índices de las filas
-columnas_a_extraer = [0, 1]       # Índices de las columnas
+filas_a_extraer = [3, 9, 15, 21]  # Lista de filas que quieres extraer
+columnas_a_extraer = ["B","C","D","E", "F"]  # Lista de columnas que quieres extraers
 datos_a_colocar = df.iloc[filas_a_extraer, columnas_a_extraer]
 
 # Paso 2: Configuración inicial de la imagen
