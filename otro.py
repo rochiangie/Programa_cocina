@@ -17,18 +17,26 @@ draw = ImageDraw.Draw(img)
 font_size = 20  # Reduce el tamaño de la fuente
 fuente = ImageFont.truetype('fuente.ttf', size=font_size)
 
+# Coordenadas del rectángulo
+x1, y1 = 332, 579
+x2, y2 = 1036, 596
+
+# Calcular el área disponible para el texto
+ancho_area = x2 - x1
+alto_area = y2 - y1
+
 # Posiciones iniciales y espaciado automático
-x_inicial, y_inicial = 150, 150  # Ajusta estas coordenadas para centrar el texto en el área en blanco
-espacio_vertical = font_size + 15  # Aumenta el espacio entre filas
-espacio_horizontal = 300           # Aumenta el espacio entre columnas
+espacio_vertical = font_size + 5  # Espacio entre filas
+espacio_horizontal = ancho_area // len(columnas_a_extraer)  # Espacio entre columnas
 
 # Generar y dibujar texto automáticamente
 for i, fila in enumerate(datos_a_colocar.itertuples(index=False)):
     for j, valor in enumerate(fila):
         # Calcular posiciones basadas en `i` y `j`
-        x = x_inicial + j * espacio_horizontal
-        y = y_inicial + i * espacio_vertical
-        draw.text((x, y), str(valor), fill="black", font=fuente)
+        x = x1 + j * espacio_horizontal
+        y = y1 + (i * espacio_vertical)
+        if y < y2:  # Asegurarse de que el texto no se salga del área
+            draw.text((x, y), str(valor), fill="black", font=fuente)
 
 # Guardar la imagen final
 nueva_imagen = 'nueva_imagen.png'
