@@ -14,12 +14,12 @@ datos_a_colocar = df.iloc[filas_a_extraer, columnas_a_extraer]
 imagen_base = 'menu.png'
 img = Image.open(imagen_base)
 draw = ImageDraw.Draw(img)
-font_size = 20  # Reduce el tamaño de la fuente
+font_size = 15  # Ajusta el tamaño de la fuente a un valor más pequeño
 fuente = ImageFont.truetype('fuente.ttf', size=font_size)
 
 # Coordenadas del rectángulo
-x1, y1 = 332, 579
-x2, y2 = 1036, 596
+x1, y1 = 332, 566
+x2, y2 = 1040, 883
 
 # Calcular el área disponible para el texto
 ancho_area = x2 - x1
@@ -43,3 +43,6 @@ nueva_imagen = 'nueva_imagen.png'
 img.save(nueva_imagen)
 
 print(f"Imagen guardada como {nueva_imagen}")
+
+
+
