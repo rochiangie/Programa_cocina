@@ -18,7 +18,7 @@ font_size = 30
 fuente = ImageFont.truetype('fuente.ttf', size=font_size)
 
 # Posiciones iniciales y espaciado automático
-x_inicial, y_inicial = 50, 50
+x_inicial, y_inicial = 400, 400
 espacio_vertical = font_size + 10  # Espacio entre filas
 espacio_horizontal = 200           # Espacio entre columnas
 
