@@ -2,14 +2,14 @@ import pandas as pd
 from PIL import Image, ImageDraw, ImageFont
 
 # Paso 1: Leer el archivo Excel
-# Asegúrate de que el archivo Excel esté en el mismo directorio o proporciona la ruta correcta
 excel_file = 'Programa_cocina\\planilla.xlsx'
 df = pd.read_excel(excel_file)
 
-# Paso 2: Procesar los datos
-# Supongamos que quieres extraer los valores de la primera fila
-# Puedes ajustar esto según tus necesidades
-datos_a_colocar = df.iloc[0]  # Extraer la primera fila
+# Paso 2: Especificar las filas y columnas que quieres extraer
+# Ejemplo: Extraer datos de la fila 0 y de las columnas "A" y "B"
+filas_a_extraer = [0, 1]  # Lista de filas que quieres extraer
+columnas_a_extraer = ["A", "B"]  # Lista de columnas que quieres extraer
+datos_a_colocar = df.loc[filas_a_extraer, columnas_a_extraer]
 
 # Paso 3: Cargar la imagen prediseñada
 imagen_base = 'Programa_cocina\\menu.png'
@@ -17,18 +17,22 @@ img = Image.open(imagen_base)
 
 # Configuración para el texto
 draw = ImageDraw.Draw(img)
-
-# Cambia 'ruta_a_tu_fuente.ttf' por la ruta real a tu archivo de fuente
-font_size = 50  # Aumenta el tamaño de la fuente
+font_size = 50
 fuente = ImageFont.truetype('Programa_cocina\\fuente.ttf', size=font_size)
 
-# Coordenadas donde colocar el texto (ajusta según tu imagen)
-x = 50
-y = 50
+# Paso 4: Posicionar los textos en la imagen
+# Especifica las coordenadas para cada elemento en una lista
+coordenadas = [
+    (50, 50),   # Posición del primer dato
+    (50, 120),  # Posición del segundo dato
+    # Agrega más posiciones según lo que necesites
+]
 
-# Paso 4: Añadir texto a la imagen
-for i, valor in enumerate(datos_a_colocar):
-    draw.text((x, y + (i * (font_size + 10))), str(valor), fill="black", font=fuente)
+# Iterar sobre los datos y posiciones para colocar cada valor en la imagen
+for i, (indice, fila) in enumerate(datos_a_colocar.iterrows()):
+    for j, valor in enumerate(fila):
+        x, y = coordenadas[i * len(fila) + j]  # Calcula la posición según el índice
+        draw.text((x, y), str(valor), fill="black", font=fuente)
 
 # Paso 5: Guardar el resultado
 nueva_imagen = 'nueva_imagen.png'
